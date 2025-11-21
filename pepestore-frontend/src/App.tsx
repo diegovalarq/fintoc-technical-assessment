@@ -29,7 +29,11 @@ function App() {
     if (order) params.orden = order;
     if (search) params.buscar = search;
 
-    axios.get<Product[]>('/products', { params })
+    const API_BASE =
+    import.meta.env.VITE_API_BASE_URL ??
+    'https://pepestore-technical-assessment.onrender.com';
+    
+    axios.get<Product[]>(`${API_BASE}/products`, { params })
       .then(response => {
         setProducts(response.data);
       })
