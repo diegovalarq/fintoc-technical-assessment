@@ -5,6 +5,7 @@ const app_module_1 = require("./app.module");
 require("dotenv/config");
 async function bootstrap() {
     const app = await core_1.NestFactory.create(app_module_1.AppModule);
+    app.setGlobalPrefix('api');
     app.enableCors();
     const port = process.env.PORT || 3000;
     await app.listen(port);
